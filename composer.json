@@ -1,0 +1,24 @@
+{
+    "name": "brunxav/notification",
+    "description": "This is a library that uses composer as the basis for generating email notification",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno Xavier",
+            "email": "bruno.s.xavier@hotmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpmailer/phpmailer": "6.5.3"
+    },
+    "config": {
+		"vendor-dir": "lib_ext"
+    },
+	"autoload":{
+		"psr-4":{
+			"Notification\\": "_app"
+		}
+	}
+}
