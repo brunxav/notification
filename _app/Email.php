@@ -9,23 +9,24 @@ class Email
 
     private $mail = \stdClass::class;
 
-    public function __construct()
+    public function __construct($host, $user, $pass, $port, $setFromEmail, $setFromName)
     {
         $this->mail = new PHPMailer(true);
 
         //Server settings
         $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;
         $this->mail->isSMTP();
-        $this->mail->Host       = 'mail.bmwdigital.com.br';
+        $this->mail->Host       = $host; //'mail.bmwdigital.com.br';
         $this->mail->SMTPAuth   = true;
-        $this->mail->Username   = 'bruno@bmwdigital.com.br';
-        $this->mail->Password   = 'eavcpsksd*';
+        $this->mail->Username   = $user; //'bruno@bmwdigital.com.br';
+        $this->mail->Password   = $pass; //'eavcpsksd*';
         $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $this->mail->Port       = 465;
+        $this->mail->Port       = $port; //465;
         $this->mail->CharSet    = 'utf-8';
         $this->mail->setLanguage('br');
         $this->mail->isHTML(true);
-        $this->mail->setFrom('bruno@bmwdigital.com.br', 'Equipe BMW Digital');
+        $this->mail->setFrom($setFromEmail, $setFromName);
+        // $this->mail->setFrom('bruno@bmwdigital.com.br', 'Equipe BMW Digital');
     }
 
     public function sendMail($subject, $body, $replyEmail, $replyName, $addressEmail, $addressName)
